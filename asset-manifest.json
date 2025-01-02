@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/megaprod/static/css/main.f855e6bc.css",
-    "main.js": "/megaprod/static/js/main.5d124161.js",
+    "main.css": "/megaprod/static/css/main.d008ae5c.css",
+    "main.js": "/megaprod/static/js/main.45ebf692.js",
     "static/js/453.311cd5dd.chunk.js": "/megaprod/static/js/453.311cd5dd.chunk.js",
     "index.html": "/megaprod/index.html",
-    "main.f855e6bc.css.map": "/megaprod/static/css/main.f855e6bc.css.map",
-    "main.5d124161.js.map": "/megaprod/static/js/main.5d124161.js.map",
+    "main.d008ae5c.css.map": "/megaprod/static/css/main.d008ae5c.css.map",
+    "main.45ebf692.js.map": "/megaprod/static/js/main.45ebf692.js.map",
     "453.311cd5dd.chunk.js.map": "/megaprod/static/js/453.311cd5dd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.5d124161.js"
+    "static/css/main.d008ae5c.css",
+    "static/js/main.45ebf692.js"
   ]
 }
