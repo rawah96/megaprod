@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/megaprod/static/css/main.d008ae5c.css",
-    "main.js": "/megaprod/static/js/main.45ebf692.js",
+    "main.css": "/megaprod/static/css/main.d45b8ad6.css",
+    "main.js": "/megaprod/static/js/main.48d606a3.js",
     "static/js/453.311cd5dd.chunk.js": "/megaprod/static/js/453.311cd5dd.chunk.js",
+    "static/media/women.png": "/megaprod/static/media/women.54dac53158c01ca76c62.png",
+    "static/media/logo.png": "/megaprod/static/media/logo.570f9fb295a06ab7a1db.png",
     "index.html": "/megaprod/index.html",
-    "main.d008ae5c.css.map": "/megaprod/static/css/main.d008ae5c.css.map",
-    "main.45ebf692.js.map": "/megaprod/static/js/main.45ebf692.js.map",
+    "main.d45b8ad6.css.map": "/megaprod/static/css/main.d45b8ad6.css.map",
+    "main.48d606a3.js.map": "/megaprod/static/js/main.48d606a3.js.map",
     "453.311cd5dd.chunk.js.map": "/megaprod/static/js/453.311cd5dd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d008ae5c.css",
-    "static/js/main.45ebf692.js"
+    "static/css/main.d45b8ad6.css",
+    "static/js/main.48d606a3.js"
   ]
 }
