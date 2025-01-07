@@ -14,10 +14,11 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
-  
-  // New state for active button and nav item
   const [activeNavItem, setActiveNavItem] = useState(null);
   const [activeButton, setActiveButton] = useState(null);
+
+  // State to manage mobile menu visibility
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isPaused) {
@@ -38,14 +39,17 @@ const Home = () => {
     setTimeoutId(newTimeoutId);
   };
 
-  // Handle active state for buttons and nav items
   const handleNavClick = (index) => {
-    setActiveNavItem(index); // Set active state for nav item
+    setActiveNavItem(index);
   };
 
   const handleButtonClick = (buttonIndex) => {
-    setActiveButton(buttonIndex); // Set active state for button
-    setTimeout(() => setActiveButton(null), 200); // Reset after a short delay
+    setActiveButton(buttonIndex);
+    setTimeout(() => setActiveButton(null), 200);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -68,7 +72,8 @@ const Home = () => {
             {/* Navbar */}
             <div className="w-full py-4 px-6 flex justify-between items-center bg-transparent">
               <img src={logo} width={100} alt="Logo" />
-              <ul className="flex space-x-6 text-white">
+              {/* Desktop navigation */}
+              <ul className="hidden md:flex space-x-6 text-white">
                 <li
                   className={`font-bold cursor-pointer ${
                     activeNavItem === 0 ? 'text-[#CF5C9E]' : 'hover:text-[#CF5C9E]'
@@ -102,9 +107,71 @@ const Home = () => {
                   CONTACT
                 </li>
               </ul>
+
+              {/* Mobile navigation (Hamburger menu) */}
+              <button
+                className="md:hidden text-white"
+                onClick={toggleMenu}
+              >
+                {/* Hamburger icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
             </div>
 
-            {/* First Slide Special Content */}
+            {/* Mobile menu */}
+            {menuOpen && (
+              <div className="md:hidden w-full bg-[#E2A8C9] p-4">
+                <ul className="flex flex-col text-white">
+                  <li
+                    className={`font-bold cursor-pointer ${
+                      activeNavItem === 0 ? 'text-[#CF5C9E]' : 'hover:text-[#CF5C9E]'
+                    }`}
+                    onClick={() => handleNavClick(0)}
+                  >
+                    HOME
+                  </li>
+                  <li
+                    className={`font-bold cursor-pointer ${
+                      activeNavItem === 1 ? 'text-[#CF5C9E]' : 'hover:text-[#CF5C9E]'
+                    }`}
+                    onClick={() => handleNavClick(1)}
+                  >
+                    SHOP
+                  </li>
+                  <li
+                    className={`font-bold cursor-pointer ${
+                      activeNavItem === 2 ? 'text-[#CF5C9E]' : 'hover:text-[#CF5C9E]'
+                    }`}
+                    onClick={() => handleNavClick(2)}
+                  >
+                    ABOUT US
+                  </li>
+                  <li
+                    className={`font-bold cursor-pointer ${
+                      activeNavItem === 3 ? 'text-[#CF5C9E]' : 'hover:text-[#CF5C9E]'
+                    }`}
+                    onClick={() => handleNavClick(3)}
+                  >
+                    CONTACT
+                  </li>
+                </ul>
+              </div>
+            )}
+
+            {/* Slide Content */}
             {slide.id === 0 && (
               <div className="flex flex-col sm:flex-row w-full items-center justify-between px-4 sm:px-8 py-0 mt-0">
                 <div className="w-full sm:w-1/2 mx-4">
@@ -116,19 +183,13 @@ const Home = () => {
                   </h6>
                   <div className="mb-4">
                     <button
-                    //   className={`bg-white text-[#CF5C9E] font-bold tracking-wide rounded-full p-3 shadow-lg ${
-                    //     activeButton === 0 ? 'bg-[#CF5C9E] text-white' : ''
-                    //   }`}
-                    className="bg-[#CF5C9E] text-white font-bold tracking-wide rounded-full p-3 shadow-lg transition-transform transform hover:scale-110"
+                      className="bg-[#CF5C9E] text-white font-bold tracking-wide rounded-full p-3 shadow-lg transition-transform transform hover:scale-110"
                       onClick={() => handleButtonClick(0)}
                     >
                       SHOP NOW
                     </button>
                     <button
-                    //   className={`bg-[#CF5C9E] text-white font-bold tracking-wide rounded-full p-2 py-3 shadow-lg mx-2 ${
-                    //     activeButton === 1 ? 'bg-white text-[#CF5C9E]' : ''
-                    //   }`}
-                    className="text-[#CF5C9E] mx-2 bg-white font-bold tracking-wide rounded-full p-3 shadow-lg transition-transform transform hover:scale-110"
+                      className="text-[#CF5C9E] mx-2 bg-white font-bold tracking-wide rounded-full p-3 shadow-lg transition-transform transform hover:scale-110"
                       onClick={() => handleButtonClick(1)}
                     >
                       SHOP ALL PRODUCTS
@@ -145,47 +206,7 @@ const Home = () => {
               </div>
             )}
 
-            {/* Second and Third Slides Content */}
-            {slide.id === 1 && (
-              <div className="flex flex-col sm:flex-row w-full items-center justify-between px-4 sm:px-8 py-0 mt-0">
-                <div className="w-full sm:w-1/2 mx-4">
-                  <h1 className="font-sans text-4xl sm:text-5xl tracking-wide font-bold text-[#CF5C9E] my-2">
-                    The Hair Dryer That Cares for Your Hair
-                  </h1>
-                  <h6 className="font-sans text-xs sm:text-sm font-bold mb-4">
-                    Experience faster drying, reduced heat damage, and sleek, frizz-free results with advanced technology designed to protect and perfect your hair.
-                  </h6>
-                  <div className="mb-4">
-                    <button
-                    //   className={`bg-white text-[#CF5C9E] font-bold tracking-wide rounded-full p-3 shadow-lg ${
-                    //     activeButton === 0 ? 'bg-[#CF5C9E] text-white' : ''
-                    //   }`}
-                    className="bg-[#CF5C9E] text-white font-bold tracking-wide rounded-full p-3 shadow-lg transition-transform transform hover:scale-110"
-                      onClick={() => handleButtonClick(0)}
-                    >
-                      SHOP NOW
-                    </button>
-                    <button
-                    //   className={`bg-[#CF5C9E] text-white font-bold tracking-wide rounded-full p-2 py-3 shadow-lg mx-2 ${
-                    //     activeButton === 1 ? 'bg-white text-[#CF5C9E]' : ''
-                    //   }`}
-                    className="bg-[#CF5C9E] mx-2 text-white font-bold tracking-wide rounded-full p-3 shadow-lg transition-transform transform hover:scale-110"
-                      onClick={() => handleButtonClick(1)}
-                    >
-                      SHOP ALL PRODUCTS
-                    </button>
-                  </div>
-                </div>
-                <div className="w-full sm:w-1/2 flex justify-center items-center">
-                  <img
-                    src={women}
-                    className="object-cover w-full h-full sm:w-3/4 sm:h-auto"
-                    alt="Hair Dryer"
-                  />
-                </div>
-              </div>
-            )}
-
+            {/* Other slides content goes here */}
           </div>
         ))}
       </div>
