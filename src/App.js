@@ -123,21 +123,29 @@ const ContactForm = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     setStatus("loading");
-
+  
+    const formData = new FormData(e.target);
+  
+    // Get the email address from the form (input with name="email")
+    const userEmail = formData.get("email");
+  
+    // Add the dynamic recipient email to the form data
     emailjs
       .sendForm(
-        "service_e0dhqpr",
-        "template_df1nd38",
-        e.target,
-        "zxIq4tNdT8LxkijR4"
+        "service_e0dhqpr", 
+        "template_df1nd38", 
+        e.target, 
+        "zxIq4tNdT8LxkijR4", 
+        { to_email: userEmail } // Pass the recipient email dynamically
       )
       .then(
         () => setStatus("success"),
         () => setStatus("error")
       );
-
+  
     e.target.reset();
   };
+  
 
   return (
     <div id="contact" className="flex flex-col items-center py-12 bg-gray-100">
@@ -160,18 +168,18 @@ const ContactForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Your email"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
-          />
-        </div>
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Recipient's email"
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          required
+        />
+      </div>
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
             Message
