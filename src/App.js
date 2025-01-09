@@ -221,11 +221,11 @@ const App = () => {
       description: "Revolutionize your brushing with smart technology.",
       image: electricbrush,
       bgColor: "#72ABC3",
-      shopLink: "https://www.example1.com",
+      shopLink: "https://voge-sa.com/ar/zvQaPDA",
     },
     {
       title: "Water Floss",
-      description: "Achieve cleaner teeth with advanced water flossing.",
+      description: "https://voge-sa.com/ar/zvmmjrg",
       image: waterfloss,
       bgColor: "#FEBF83",
       shopLink: "https://www.example1.com",
