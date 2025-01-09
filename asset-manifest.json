@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/megaprod/static/css/main.413bc331.css",
-    "main.js": "/megaprod/static/js/main.07202ea4.js",
+    "main.js": "/megaprod/static/js/main.f1a3937f.js",
     "static/js/453.311cd5dd.chunk.js": "/megaprod/static/js/453.311cd5dd.chunk.js",
     "static/media/women.png": "/megaprod/static/media/women.54dac53158c01ca76c62.png",
     "static/media/waterfloss.png": "/megaprod/static/media/waterfloss.e56b428d2e097693645d.png",
@@ -10,11 +10,11 @@
     "static/media/logo.png": "/megaprod/static/media/logo.570f9fb295a06ab7a1db.png",
     "index.html": "/megaprod/index.html",
     "main.413bc331.css.map": "/megaprod/static/css/main.413bc331.css.map",
-    "main.07202ea4.js.map": "/megaprod/static/js/main.07202ea4.js.map",
+    "main.f1a3937f.js.map": "/megaprod/static/js/main.f1a3937f.js.map",
     "453.311cd5dd.chunk.js.map": "/megaprod/static/js/453.311cd5dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.413bc331.css",
-    "static/js/main.07202ea4.js"
+    "static/js/main.f1a3937f.js"
   ]
 }
