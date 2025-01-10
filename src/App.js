@@ -1,271 +1,158 @@
-import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import emailjs from "emailjs-com";
-import logo from '../src/assets/logo.png';
-import women from '../src/assets/women.png';
+import React from "react";
+import { motion } from "framer-motion";
+import finalVideo from './assets/final.mp4';
 import dryer from '../src/assets/dryer.png';
-import electricbrush from '../src/assets/electricbrush.png'
-import waterfloss from '../src/assets/waterfloss.png'
-
-const Navbar = ({ isOpen, toggleMenu, navbarBgColor }) => {
-  const [scrolling, setScrolling] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  return (
-    <nav
-      className={`text-gray-600 p-4 fixed top-0 left-0 w-full z-20 transition-all ${scrolling ? 'bg-white' : ''}`}
-      style={{ backgroundColor: scrolling ? 'white' : navbarBgColor, height: '65px' }}
-    >
-      <div className="container mx-auto flex items-center justify-between h-full">
-        <img src={logo} alt="Logo" className="h-10 md:h-12" />
-        <div className="hidden md:flex space-x-6">
-          <a href="#home" className="hover:text-blue-400">Home</a>
-          <a href="#about" className="hover:text-blue-400">About Us</a>
-          <a href="#contact" className="hover:text-blue-400">Contact Us</a>
-        </div>
-        <button
-          className="md:hidden text-2xl"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
-      {isOpen && (
-        <div className="md:hidden mt-4 flex flex-col items-center space-y-4">
-          <a href="#home" className="hover:text-blue-400" onClick={toggleMenu}>Home</a>
-          <a href="#about" className="hover:text-blue-400" onClick={toggleMenu}>About Us</a>
-          <a href="#contact" className="hover:text-blue-400" onClick={toggleMenu}>Contact Us</a>
-        </div>
-      )}
-    </nav>
-  );
-};
-
-const ProductSection = ({ title, description, image, bgColor, onNextClick, setNavbarBgColor, shopLink }) => {
-  useEffect(() => {
-    setNavbarBgColor(bgColor);
-  }, [bgColor, setNavbarBgColor]);
-
-  return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center px-6 sm:py-24 h-auto md:h-[50vh] sm:h-auto" // Adjusted for small screens
-      style={{ backgroundColor: bgColor }}
-    >
-      {/* Left side: Title and Description */}
-      <div className="max-w-lg sm:max-w-xl text-left z-10 text-center sm:text-left md:mb-0">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-white">{title}</h2>
-        <p className="text-lg sm:text-xl mb-6 text-white">{description}</p>
-        <button
-          onClick={() => window.location.href = shopLink}
-          className="text-white bg-white font-bold tracking-wide rounded-full p-3 px-8 shadow-lg transition-transform transform hover:scale-110 sm:mb-0"
-          style={{
-            color: bgColor
-          }}
->
-          SHOP NOW
-        </button>
-      </div>
-
-      {/* Right side: Image */}
-      <div className="w-full sm:w-3/4 md:w-1/2 max-w-none md:order-last mt-4 md:mt-0">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-auto sm:h-[40vh] md:h-[50vh] object-cover rounded-lg" // Adjust height dynamically
-        />
-      </div>
-
-      {/* Right Circular "Next" Button on Top */}
-      <button
-        onClick={onNextClick}
-        className="absolute right-10 sm:right-16 top-1/2 sm:top-1/3 w-14 sm:w-16 h-14 sm:h-16 text-white rounded-full flex items-center justify-center shadow-2xl transform transition-transform duration-300 hover:scale-110"
-        style={{
-          backgroundColor: darkenColor(bgColor),
-        }}
-      >
-        <span className="text-xl sm:text-2xl">→</span>
-      </button>
-    </div>
-  );
-};
-
-
-const darkenColor = (hex) => {
-  let color = hex.substring(1);
-  let r = parseInt(color.substring(0, 2), 16);
-  let g = parseInt(color.substring(2, 4), 16);
-  let b = parseInt(color.substring(4, 6), 16);
-
-  r = Math.max(0, r - 30);
-  g = Math.max(0, g - 30);
-  b = Math.max(0, b - 30);
-
-  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
-};
-
-const ContactForm = () => {
-  const [status, setStatus] = useState("");
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setStatus("loading");
-  
-    const formData = new FormData(e.target);
-  
-    // Get the email address from the form (input with name="email")
-    const userEmail = formData.get("email");
-  
-    // Add the dynamic recipient email to the form data
-    emailjs
-      .sendForm(
-        "service_e0dhqpr", 
-        "template_df1nd38", 
-        e.target, 
-        "zxIq4tNdT8LxkijR4", 
-        { to_email: userEmail } // Pass the recipient email dynamically
-      )
-      .then(
-        () => setStatus("success"),
-        () => setStatus("error")
-      );
-  
-    e.target.reset();
-  };
-  
-
-  return (
-    <div id="contact" className="flex flex-col items-center py-12 bg-gray-100">
-      <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-      <form
-        onSubmit={sendEmail}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg rounded-lg"
-      >
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Your name"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            required
-          />
-        </div>
-        <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Recipient's email"
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          required
-        />
-      </div>
-        <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Your message"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            rows="4"
-            required
-          ></textarea>
-        </div>
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className={`${
-              status === "loading" ? "bg-gray-400" : "bg-[#E2A8C9]"
-            } text-white font-bold py-2 px-8 rounded-full focus:outline-none focus:shadow-outline`}
-            disabled={status === "loading"}
-          >
-            {status === "loading" ? "Sending..." : "Send Email"}
-          </button>
-        </div>
-      </form>
-      {status === "success" && <p className="text-green-500 mt-4">Message sent successfully!</p>}
-      {status === "error" && <p className="text-red-500 mt-4">Failed to send the message. Try again!</p>}
-    </div>
-  );
-};
+import electricbrush from '../src/assets/electricbrush.png';
+import dentalcare from '../src/assets/dentalcare.png';
+import waterfloss from '../src/assets/waterfloss.png';
 
 const App = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState(0);
-  const [navbarBgColor, setNavbarBgColor] = useState("#E2A8C9");
-
-  const products = [
-    {
-      title: "The Hair Dryer That Cares for Your Hair",
-      description: "Experience faster drying, reduced heat damage, and sleek, frizz-free results with advanced technology designed to protect and perfect your hair.",
-      image: women,
-      bgColor: "#E2A8C9",
-      shopLink: "https://voge-sa.com/ar/Vqmqpab",
-    },
-    {
-      title: "Electric Brush",
-      description: "Revolutionize your brushing with smart technology.",
-      image: electricbrush,
-      bgColor: "#72ABC3",
-      shopLink: "https://voge-sa.com/ar/zvQaPDA",
-    },
-    {
-      title: "Water Floss",
-      description: "https://voge-sa.com/ar/zvmmjrg",
-      image: waterfloss,
-      bgColor: "#FEBF83",
-      shopLink: "https://www.example1.com",
-    },
-  ];
-
-  const handleNextProduct = () => {
-    setCurrentProduct((prev) => (prev + 1) % products.length);
-  };
-
   return (
-    <div className="relative">
-      <Navbar isOpen={isMenuOpen} toggleMenu={() => setMenuOpen(!isMenuOpen)} navbarBgColor={navbarBgColor} />
-      
-      {/* Hero Section */}
-      <div id="home" className="mt-16">
-        <ProductSection
-          {...products[currentProduct]}
-          onNextClick={handleNextProduct}
-          setNavbarBgColor={setNavbarBgColor}
-        />
-      </div>
+    <div className="min-h-screen bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white flex flex-col">
+      {/* Hero Section with Video Background */}
+      <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-contain z-0"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={finalVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      {/* About Us Section */}
-      <section id="about" className="h-screen bg-gray-200 flex items-center justify-center">
-        <h2 className="text-4xl font-bold">About Us</h2>
+        {/* Content Over Video */}
+        <div className="relative z-10 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl font-extrabold mb-4 text-white"
+          >
+            Discover <span className="text-[#B99889]">Iconic Products</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-xl text-white max-w-2xl mx-auto"
+          >
+            Elevate your lifestyle with our premium range of beauty and care products. Start your journey with us today.
+          </motion.p>
+
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-8"
+          >
+            <a
+              href="#products"
+              className="px-6 py-3 bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-black font-bold text-lg rounded-full shadow-lg hover:scale-105 transform transition"
+            >
+              Explore Products
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Optional: Overlay for Contrast */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-5"></div>
+      </header>
+
+      {/* Products Section */}
+      <section
+        id="products"
+        className="bg-white text-gray-900 py-20 px-6 sm:px-16 lg:px-32"
+      >
+        <h2 className="text-4xl font-bold text-center mb-12">Our Products</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="p-6 bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] rounded-xl shadow-lg flex flex-col items-center"
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-24 h-24 mb-4 object-contain"
+              />
+              <h3 className="text-2xl font-bold mb-2 text-center">{product.name}</h3>
+              <p className="text-lg text-center">{product.description}</p>
+
+              {/* Redirect Button */}
+              <a
+                href={product.link} // This will redirect to a unique URL for each product
+                className="mt-4 px-6 py-2 bg-[#B99889] text-white rounded-full text-lg transition hover:scale-105 transform"
+              >
+                View Details
+              </a>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
-      {/* Contact Us Section */}
-      <ContactForm />
+      {/* Call-to-Action Section */}
+      <footer className="bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white py-12 px-8 sm:px-16 lg:px-32 text-center">
+      <motion.h3
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        className="text-4xl font-bold mb-6 tracking-wide text-[#5A4F4A]"
+      >
+        Upgrade Your Daily Routine
+      </motion.h3>
+
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <a
+          href="https://voge-sa.com/ar"  // Your desired external link
+          className="px-8 py-4 bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-black font-semibold text-xl rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out"
+        >
+          Shop Now
+        </a>
+      </motion.div>
+    </footer>
     </div>
   );
 };
+
+const products = [
+  {
+    image: dryer,
+    name: "Hair Dryer",
+    description: "Quick-drying technology with a sleek design.",
+    link: "https://voge-sa.com/ar/Vqmqpab"
+  },
+  {
+    image: electricbrush,
+    name: "Electric Brush",
+    description: "Gentle and effective brushing for shiny hair.",
+    link: "https://voge-sa.com/ar/zvQaPDA"
+  },
+  {
+    image: dentalcare,
+    name: "Dental Care",
+    description: "Maintain a sparkling smile effortlessly.",
+    link: "https://voge-sa.com/ar/category/BgAvD"
+  },
+  {
+    image: waterfloss,
+    name: "Water Floss",
+    description: "Advanced water flossing for perfect hygiene.",
+    link: "https://voge-sa.com/ar/zvmmjrg"
+  }
+];
 
 export default App;
