@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import finalVideo from './assets/final.mp4';
 import dryer from '../src/assets/dryer.png';
 import electricbrush from '../src/assets/electricbrush.png';
 import dentalcare from '../src/assets/dentalcare.png';
@@ -13,13 +12,12 @@ const App = () => {
       <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0 mobile-video"
+        autoPlay
         loop
         muted
         playsInline
-        controls
-        poster={dryer} // Fallback image for mobile
       >
-        <source src={finalVideo} type="video/mp4" />
+        <source src="/final.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
