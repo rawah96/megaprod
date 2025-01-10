@@ -12,7 +12,8 @@ const App = () => {
       {/* Hero Section with Video Background */}
       <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <video
-          className="absolute top-0 left-0 w-full h-full object-contain z-0"
+          className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0"
+
           autoPlay
           loop
           muted
