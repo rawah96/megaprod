@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/megaprod/static/css/main.413bc331.css",
-    "main.js": "/megaprod/static/js/main.3fb6382f.js",
+    "main.css": "/megaprod/static/css/main.f1d3ec5e.css",
+    "main.js": "/megaprod/static/js/main.0356de38.js",
     "static/js/453.311cd5dd.chunk.js": "/megaprod/static/js/453.311cd5dd.chunk.js",
-    "static/media/women.png": "/megaprod/static/media/women.54dac53158c01ca76c62.png",
+    "static/media/final.mp4": "/megaprod/static/media/final.5a3bab304f6f14d237b0.mp4",
+    "static/media/dentalcare.png": "/megaprod/static/media/dentalcare.ec595712915488e5045f.png",
     "static/media/waterfloss.png": "/megaprod/static/media/waterfloss.e56b428d2e097693645d.png",
     "static/media/dryer.png": "/megaprod/static/media/dryer.bcb73148e0f3201342ca.png",
     "static/media/electricbrush.png": "/megaprod/static/media/electricbrush.5dac9f007b87c17cf5c7.png",
-    "static/media/logo.png": "/megaprod/static/media/logo.570f9fb295a06ab7a1db.png",
     "index.html": "/megaprod/index.html",
-    "main.413bc331.css.map": "/megaprod/static/css/main.413bc331.css.map",
-    "main.3fb6382f.js.map": "/megaprod/static/js/main.3fb6382f.js.map",
+    "main.f1d3ec5e.css.map": "/megaprod/static/css/main.f1d3ec5e.css.map",
+    "main.0356de38.js.map": "/megaprod/static/js/main.0356de38.js.map",
     "453.311cd5dd.chunk.js.map": "/megaprod/static/js/453.311cd5dd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.413bc331.css",
-    "static/js/main.3fb6382f.js"
+    "static/css/main.f1d3ec5e.css",
+    "static/js/main.0356de38.js"
   ]
 }
