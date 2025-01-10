@@ -11,16 +11,18 @@ const App = () => {
     <div className="min-h-screen bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white flex flex-col">
       {/* Hero Section with Video Background */}
       <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0 mobile-video"
-          loop
-          muted
-          playsInline
-          poster={dryer}
-        >
-          <source src={finalVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0 mobile-video"
+        loop
+        muted
+        playsInline
+        controls
+        poster={dryer} // Fallback image for mobile
+      >
+        <source src={finalVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
 
         {/* Content Over Video */}
         <div className="relative z-10 text-center">
