@@ -5,18 +5,19 @@ import dryer from '../src/assets/dryer.png';
 import electricbrush from '../src/assets/electricbrush.png';
 import dentalcare from '../src/assets/dentalcare.png';
 import waterfloss from '../src/assets/waterfloss.png';
-
+import './App.css';
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white flex flex-col">
       {/* Hero Section with Video Background */}
       <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <video
-          className="absolute top-0 left-0 w-full h-full object-fit z-0"
+          className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0 mobile-video"
           autoPlay
           loop
           muted
           playsInline
+          poster={dryer}
         >
           <source src={finalVideo} type="video/mp4" />
           Your browser does not support the video tag.

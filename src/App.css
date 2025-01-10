@@ -1,0 +1,9 @@
+/* Mobile Video Fix */
+@media (max-width: 768px) {
+    .mobile-video {
+      object-fit: contain !important;  /* Makes sure the video scales correctly on mobile */
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+  
