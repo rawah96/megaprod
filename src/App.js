@@ -1,26 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
+import finalVideo from './assets/final.mp4'; // Import video
 import dryer from '../src/assets/dryer.png';
 import electricbrush from '../src/assets/electricbrush.png';
 import dentalcare from '../src/assets/dentalcare.png';
 import waterfloss from '../src/assets/waterfloss.png';
 import './App.css';
+
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white flex flex-col">
       {/* Hero Section with Video Background */}
       <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0 mobile-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
-        <source src="/final.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover md:object-contain z-0 mobile-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={finalVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
         {/* Content Over Video */}
         <div className="relative z-10 text-center">
@@ -100,30 +101,30 @@ const App = () => {
 
       {/* Call-to-Action Section */}
       <footer className="bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white py-12 px-8 sm:px-16 lg:px-32 text-center">
-      <motion.h3
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="text-4xl font-bold mb-6 tracking-wide text-[#5A4F4A]"
-      >
-        Upgrade Your Daily Routine
-      </motion.h3>
-
-      <motion.div
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <a
-          href="https://voge-sa.com/ar"  // Your desired external link
-          className="px-8 py-4 bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-black font-semibold text-xl rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out"
+        <motion.h3
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="text-4xl font-bold mb-6 tracking-wide text-[#5A4F4A]"
         >
-          Shop Now
-        </a>
-      </motion.div>
-    </footer>
+          Upgrade Your Daily Routine
+        </motion.h3>
+
+        <motion.div
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <a
+            href="https://voge-sa.com/ar"  // Your desired external link
+            className="px-8 py-4 bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-black font-semibold text-xl rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out"
+          >
+            Shop Now
+          </a>
+        </motion.div>
+      </footer>
     </div>
   );
 };
