@@ -5,15 +5,46 @@ import dryer from '../src/assets/dryer.png';
 import electricbrush from '../src/assets/electricbrush.png';
 import dentalcare from '../src/assets/dentalcare.png';
 import waterfloss from '../src/assets/waterfloss.png';
+import vogelogo from '../src/assets/vogelogo.png';
 import './App.css';
 
 const App = () => {
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white flex flex-col">
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 w-full bg-transparent backdrop-blur-md z-50">
+        <div className="flex items-center justify-between px-8 py-2">
+          <h1 className="text-2xl font-bold text-white">
+            <img src={vogelogo} width={100} href="#home"/>
+          </h1>
+          <ul className="flex space-x-6">
+            <li>
+              <a
+                href="#home"
+                className="text-black hover:text-[#B99889] transition"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                className="text-black hover:text-[#B99889] transition"
+              >
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       {/* Hero Section with Video Background */}
-      <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+      <header
+        id="home"
+        className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
+      >
         <video
-          className="absolute top-0 left-0 w-full h-full object-cover z-0 mobile-video"
+          className="absolute top-0 left-0 w-full object-cover z-0 mobile-video"
           autoPlay
           loop
           muted
@@ -40,7 +71,8 @@ const App = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="text-xl text-white max-w-2xl mx-auto"
           >
-            Elevate your lifestyle with our premium range of beauty and care products. Start your journey with us today.
+            Elevate your lifestyle with our premium range of beauty and care
+            products. Start your journey with us today.
           </motion.p>
 
           <motion.div
@@ -84,7 +116,9 @@ const App = () => {
                 alt={product.name}
                 className="w-24 h-24 mb-4 object-contain"
               />
-              <h3 className="text-2xl font-bold mb-2 text-center">{product.name}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-center">
+                {product.name}
+              </h3>
               <p className="text-lg text-center">{product.description}</p>
 
               {/* Redirect Button */}
@@ -99,32 +133,46 @@ const App = () => {
         </div>
       </section>
 
-      {/* Call-to-Action Section */}
-      <footer className="bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white py-12 px-8 sm:px-16 lg:px-32 text-center">
-        <motion.h3
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="text-4xl font-bold mb-6 tracking-wide text-[#5A4F4A]"
-        >
-          Upgrade Your Daily Routine
-        </motion.h3>
-
-        <motion.div
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+      {/* Contact Section */}
+      <section
+        id="contact"
+        className="bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-white py-12 px-8 sm:px-16 lg:px-32"
+      >
+        <h3 className="text-4xl font-bold mb-6 text-center text-black">Contact Us</h3>
+        <div className="flex justify-center space-x-8 text-center">
+          {/* WhatsApp */}
           <a
-            href="https://voge-sa.com/ar"  // Your desired external link
-            className="px-8 py-4 bg-gradient-to-r from-[#D9C0B7] via-[#F1E0D6] to-[#C0A194] text-black font-semibold text-xl rounded-full shadow-xl hover:scale-105 transform transition duration-300 ease-in-out"
+            href="https://wa.me/+966594203751"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center transition transform hover:scale-125 hover:text-[#25D366]"
           >
-            Shop Now
+            <i className="fab fa-whatsapp text-3xl mb-2 text-green-600"></i>
           </a>
-        </motion.div>
-      </footer>
+
+          {/* Instagram */}
+          <a
+            href="https://www.instagram.com/voge.ksa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center transition transform hover:scale-125 hover:text-[#E1306C]"
+          >
+            <i className="fab fa-instagram text-3xl mb-2 text-purple-900"></i>
+          </a>
+
+          {/* Email */}
+          <a
+            href="mailto:Info@tb-sa.com"
+            className="flex flex-col items-center transition transform hover:scale-125 hover:text-[#FF4500]"
+          >
+            <i className="fas fa-envelope text-3xl mb-2 text-purple-900"></i>
+          </a>
+        </div>
+      </section>
+
+
+
+
     </div>
   );
 };
@@ -134,26 +182,26 @@ const products = [
     image: dryer,
     name: "Hair Dryer",
     description: "Quick-drying technology with a sleek design.",
-    link: "https://voge-sa.com/ar/Vqmqpab"
+    link: "https://voge-sa.com/ar/Vqmqpab",
   },
   {
     image: electricbrush,
     name: "Electric Brush",
     description: "Gentle and effective brushing for shiny hair.",
-    link: "https://voge-sa.com/ar/zvQaPDA"
+    link: "https://voge-sa.com/ar/zvQaPDA",
   },
   {
     image: dentalcare,
     name: "Dental Care",
     description: "Maintain a sparkling smile effortlessly.",
-    link: "https://voge-sa.com/ar/category/BgAvD"
+    link: "https://voge-sa.com/ar/category/BgAvD",
   },
   {
     image: waterfloss,
     name: "Water Floss",
     description: "Advanced water flossing for perfect hygiene.",
-    link: "https://voge-sa.com/ar/zvmmjrg"
-  }
+    link: "https://voge-sa.com/ar/zvmmjrg",
+  },
 ];
 
 export default App;
