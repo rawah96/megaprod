@@ -44,13 +44,13 @@ const App = () => {
         className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
       >
         <video
-          className="absolute top-0 left-0 w-full object-cover z-0 mobile-video"
+          // className="absolute top-0 left-0 w-full object-cover z-0 mobile-video"
           autoPlay
           loop
           muted
           playsInline
         >
-          <source src={`${process.env.PUBLIC_URL}/final.mp4`} type="video/mp4" />
+          <source src={`${process.env.PUBLIC_URL}/final.mp4?version=1`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
