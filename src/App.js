@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import finalVideo from './assets/final.mp4'; // Import video
+// import finalVideo from './assets/final.mp4'; // Import video
 import dryer from '../src/assets/dryer.png';
 import electricbrush from '../src/assets/electricbrush.png';
 import dentalcare from '../src/assets/dentalcare.png';
@@ -50,7 +50,7 @@ const App = () => {
           muted
           playsInline
         >
-          <source src={finalVideo} type="video/mp4" />
+          <source src={`${process.env.PUBLIC_URL}/final.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
