@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-// import finalVideo from './assets/final.mp4'; // Import video
 import dryer from '../src/assets/dryer.png';
 import electricbrush from '../src/assets/electricbrush.png';
 import dentalcare from '../src/assets/dentalcare.png';
@@ -41,23 +40,20 @@ const App = () => {
       {/* Hero Section with Video Background */}
       <header
         id="home"
-        className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
+        className="relative h-screen flex items-center justify-center overflow-hidden"
       >
-      <video autoPlay loop muted playsInline>
-        <source src={`${process.env.PUBLIC_URL}/final_compressed.mp4`} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-
-
+        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
+          <source src={`${process.env.PUBLIC_URL}/final_compressed.mp4`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
         {/* Content Over Video */}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 text-center px-6 md:px-8">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-6xl font-extrabold mb-4 text-white"
+            className="text-4xl md:text-6xl font-extrabold mb-4 text-white"
           >
             Discover <span className="text-[#B99889]">Iconic Products</span>
           </motion.h1>
@@ -120,7 +116,7 @@ const App = () => {
 
               {/* Redirect Button */}
               <a
-                href={product.link} // This will redirect to a unique URL for each product
+                href={product.link}
                 className="mt-4 px-6 py-2 bg-[#B99889] text-white rounded-full text-lg transition hover:scale-105 transform"
               >
                 View Details
@@ -166,10 +162,6 @@ const App = () => {
           </a>
         </div>
       </section>
-
-
-
-
     </div>
   );
 };
