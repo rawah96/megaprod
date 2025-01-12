@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/megaprod/static/css/main.fe7751c7.css",
-    "main.js": "/megaprod/static/js/main.b2c0b505.js",
+    "main.js": "/megaprod/static/js/main.d14c5012.js",
     "static/js/453.311cd5dd.chunk.js": "/megaprod/static/js/453.311cd5dd.chunk.js",
     "static/media/fa-solid-900.ttf": "/megaprod/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/dentalcare.png": "/megaprod/static/media/dentalcare.ec595712915488e5045f.png",
@@ -18,11 +18,11 @@
     "static/media/fa-v4compatibility.woff2": "/megaprod/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/megaprod/index.html",
     "main.fe7751c7.css.map": "/megaprod/static/css/main.fe7751c7.css.map",
-    "main.b2c0b505.js.map": "/megaprod/static/js/main.b2c0b505.js.map",
+    "main.d14c5012.js.map": "/megaprod/static/js/main.d14c5012.js.map",
     "453.311cd5dd.chunk.js.map": "/megaprod/static/js/453.311cd5dd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fe7751c7.css",
-    "static/js/main.b2c0b505.js"
+    "static/js/main.d14c5012.js"
   ]
 }
